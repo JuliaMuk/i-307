@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestContreller;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,14 @@ Route::get('/', function () {
 });
 
 Route::get('/second',[TestContreller::class, 'show']);
+
+
+Route::get('/products',[ProductController::class, 'index'])
+        ->name('products.index');
+Route::get('/products/create',[ProductController::class,'create'])
+        ->name('products.create');
+Route::post('/products',[ProductController::class,'store'])
+        ->name('products.store');
+
+Route::get('/products/{product}',[ProductController::class,'show'])
+        ->name('products.show');
